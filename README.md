@@ -192,3 +192,4 @@ To help us continue improving the Toolkit, we’d love you to keep these analyti
 
 ## Running Taurus
 Navigate to [docs](docs) folder and follow instructions.
+SoftComply
