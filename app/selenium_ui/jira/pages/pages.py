@@ -6,7 +6,7 @@ import json
 
 from selenium_ui.base_page import BasePage
 from selenium_ui.jira.pages.selectors import UrlManager, LoginPageLocators, DashboardLocators, PopupLocators, \
-    IssueLocators, ProjectLocators, SearchLocators, BoardsListLocators, BoardLocators, LogoutLocators
+    IssueLocators, ProjectLocators, ProjectMatrixLocators, ProjectRmTableLocators, SearchLocators, BoardsListLocators, BoardLocators, LogoutLocators
 
 
 class PopupManager(BasePage):
@@ -202,7 +202,21 @@ class Project(BasePage):
         url_manager = UrlManager(project_key=project_key)
         self.page_url = url_manager.project_summary_url()
 
+class ProjectMatrix(BasePage):
+    page_loaded_selector = ProjectMatrixLocators.project_martix_div
 
+    def __init__(self, driver, project_key):
+        BasePage.__init__(self, driver)
+        url_manager = UrlManager(project_key=project_key)
+        self.page_url = url_manager.project_matrix_url()
+
+class ProjectRmTable(BasePage):
+    page_loaded_selector = ProjectRmTableLocators.project_rm_table_div
+
+    def __init__(self, driver, project_key):
+        BasePage.__init__(self, driver)
+        url_manager = UrlManager(project_key=project_key)
+        self.page_url = url_manager.project_rm_table_url()
 class ProjectsList(BasePage):
 
     def __init__(self, driver, projects_list_pages):

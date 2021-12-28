@@ -18,6 +18,8 @@ class UrlManager:
         self.dashboard_params = '/secure/Dashboard.jspa'
         self.issue_params = f"/browse/{issue_key}"
         self.project_summary_params = f"/projects/{project_key}/summary"
+        self.project_matrix_params = f"/projects/{project_key}?selectedItem=com-softcomply-riskmanager-cloud:risk-model"
+        self.project_rm_table_params = f"/projects/{project_key}?selectedItem=com-softcomply-riskmanager-cloud:risk-management"
         self.jql_params = f"/issues/?jql={jql}"
         self.edit_issue_params = f"/secure/EditIssue!default.jspa?id={issue_id}"
         self.edit_comments_params = f"/secure/AddComment!default.jspa?id={issue_id}"
@@ -38,6 +40,12 @@ class UrlManager:
 
     def project_summary_url(self):
         return f"{self.host}{self.project_summary_params}"
+
+    def project_matrix_url(self):
+        return f"{self.host}{self.project_matrix_params}"
+
+    def project_rm_table_url(self):
+        return f"{self.host}{self.project_rm_table_params}"
 
     def jql_search_url(self):
         return f"{self.host}{self.jql_params}"
@@ -132,6 +140,15 @@ class ProjectLocators:
     projects_list = (By.CSS_SELECTOR, "tbody.projects-list")
     projects_not_found = (By.CLASS_NAME, "none-panel")
 
+class ProjectMatrixLocators:
+
+    project_martix_div = (By.CLASS_NAME, 'rm-page-content')
+    #projects_matrix_rc_heading = (By.CLASS_NAME, "risk-class-block heading")
+
+class ProjectRmTableLocators:
+
+    project_rm_table_div = (By.CLASS_NAME, 'rm-page-content')
+    #projects_matrix_rc_heading = (By.CLASS_NAME, "risk-class-block heading")
 
 class SearchLocators:
 
