@@ -2,7 +2,7 @@ import random
 import urllib.parse
 
 from selenium_ui.conftest import print_timing
-from selenium_ui.jira.pages.pages import Login, PopupManager, Issue, Project, Search, ProjectsList, \
+from selenium_ui.jira.pages.pages import Login, PopupManager, Issue, Project, ProjectMatrix, ProjectRmTable, Search, ProjectsList, \
     BoardsList, Board, Dashboard, Logout
 
 from util.api.jira_clients import JiraRestClient
@@ -91,6 +91,23 @@ def view_project_summary(webdriver, datasets):
         project_page.wait_for_page_loaded()
     measure()
 
+def view_project_matrix(webdriver, datasets):
+    project_matrix_page = ProjectMatrix(webdriver, project_key=datasets['project_key'])
+
+    @print_timing("selenium_project_matrix")
+    def measure():
+        project_matrix_page.go_to()
+        project_matrix_page.wait_for_page_loaded()
+    measure()
+
+def view_project_rm_table(webdriver, datasets):
+    project_rm_table_page = ProjectRmTable(webdriver, project_key=datasets['project_key'])
+
+    @print_timing("selenium_project_rm_table")
+    def measure():
+        project_rm_table_page.go_to()
+        project_rm_table_page.wait_for_page_loaded()
+    measure()
 
 def create_issue(webdriver, dataset):
     issue_modal = Issue(webdriver)
